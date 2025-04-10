@@ -45,10 +45,23 @@ function addtask() {
     // dark mode code below
 
 
+
     let btndark = document.getElementById("darkmode");
+    btndark.textContent = "Dark Mode";
     btndark.addEventListener("click", () => {
 
         isdark = !isdark;
+
+        // making text from dark mode to light mode
+        if (isdark) {
+            btndark.textContent = "Light Mode";
+        } else {
+            btndark.textContent = "Dark Mode";
+        }
+
+        console.log("dark mode: ", isdark, "button text: ", btndark.textContent);
+
+
         // making navbar dark
         let navdark = document.querySelector(".navbar");
         navdark.classList.toggle("navbar-dark")
@@ -98,6 +111,10 @@ function addtask() {
             }
         });
     })
+
+
+
+
 
 }
 
