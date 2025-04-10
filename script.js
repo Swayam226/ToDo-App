@@ -1,4 +1,5 @@
 let taskarea = document.querySelector(".taskarea")
+let isdark = false;
 
 
 function addtask() {
@@ -15,11 +16,11 @@ function addtask() {
             tasklist.className = "tasklist"
 
             let taskitem = document.createElement("li");
-            taskitem.className = "taskitem"
+            taskitem.className = isdark ? "taskitem-dark" : "taskitem";
 
             // adding task completion styles
             taskitem.addEventListener("click", () => {
-                tasklist.classList.toggle("taskcomp")
+                taskitem.classList.toggle("taskcomp")
             })
 
             taskitem.textContent = taskcontent;
@@ -40,10 +41,14 @@ function addtask() {
         taskarea.innerHTML = '';
     })
 
+
     // dark mode code below
+
 
     let btndark = document.getElementById("darkmode");
     btndark.addEventListener("click", () => {
+
+        isdark = !isdark;
         // making navbar dark
         let navdark = document.querySelector(".navbar");
         navdark.classList.toggle("navbar-dark")
@@ -79,7 +84,23 @@ function addtask() {
         // making footer dark
         let darkfooter = document.querySelector(".footer");
         darkfooter.classList.toggle("footer-dark");
+
+
+        let itemdark = document.querySelectorAll(".taskitem , .taskitem-dark")
+        itemdark.forEach(element => {
+            if (isdark) {
+                element.classList.add("taskitem-dark");
+                element.classList.remove("taskitem");
+            }
+            else {
+                element.classList.add("taskitem");
+                element.classList.remove("taskitem-dark");
+            }
+        });
     })
+
 }
+
+
 
 addtask()
