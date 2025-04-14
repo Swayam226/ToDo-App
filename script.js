@@ -30,7 +30,6 @@ function addtask() {
         }
 
 
-
     })
 
     // clear task code below
